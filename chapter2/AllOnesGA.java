@@ -8,5 +8,25 @@ public class AllOnesGA {
 
         //initialize population
         Population population = ga.initPopulation(50);
+    
+        ga.evalPopulation(population);
+        int generation =1;
+
+        while(ga.isTerminationConditionMet(population)) {
+            System.out.println("Best soluation: " + population.getFittest(0).toString());
+
+            //apply crossover
+            population = ga.crossoverPopulation(population);
+
+            //apply mutation
+
+            //evaluate population
+            ga.evalPopulation(population);
+
+            generation++;
+        }
+
+        System.out.println("Found solution in " + generation + " generations");
+        System.out.println("Best soluation: " + population.getFittest(0).toString());
     }
 }
