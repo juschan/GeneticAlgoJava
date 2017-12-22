@@ -46,7 +46,7 @@ public class Population {
         this.populationFitness = fitness;
     }
 
-    public double getPopulationFitnessa() {
+    public double getPopulationFitness() {
         return this.populationFitness;
     }
 
