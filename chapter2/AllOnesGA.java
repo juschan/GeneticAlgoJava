@@ -19,6 +19,7 @@ public class AllOnesGA {
             population = ga.crossoverPopulation(population);
 
             //apply mutation
+            population = ga.mutatePopulation(population);
 
             //evaluate population
             ga.evalPopulation(population);

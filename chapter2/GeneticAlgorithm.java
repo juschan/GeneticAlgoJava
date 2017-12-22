@@ -114,5 +114,28 @@ public class GeneticAlgorithm {
 
     }
 
+    public Population mutatePopulation(Population population) {
+        Population newPopulation = new Population(this.populationSize);
+
+        for (int populationIndex =0; populationIndex <population.size(); populationIndex++) {
+            Individual individual = population.getFittest(populationIndex);
+
+            for (int geneIndex=0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
+                if(populationIndex>=this.elitismCount) {
+                    if(this.mutationRate > Math.random()) {
+                        int newGene=1;
+                        if (individual.getGene(geneIndex)==1) {
+                            newGene=0;
+                        }
+                        //mutate gene
+                        individual.setGene(geneIndex,newGene);
+                    }
+                }
+            }
+            newPopulation.setIndividual(populationIndex, individual);
+        }
+        return newPopulation;
+    }
+
 
 }
