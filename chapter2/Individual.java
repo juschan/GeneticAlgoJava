@@ -1,5 +1,7 @@
 package chapter2;
 
+
+//Individual class represents single candidate solution. 
 public class Individual {
     private int[] chromosome;
     private double fitness =-1;
