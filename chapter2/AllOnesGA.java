@@ -4,7 +4,7 @@ package chapter2;
 public class AllOnesGA {
 
     public static void main(String[] args) {
-        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.95, 0);
+        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.95, 2);
 
         //initialize population
         Population population = ga.initPopulation(50);
@@ -12,8 +12,8 @@ public class AllOnesGA {
         ga.evalPopulation(population);
         int generation =1;
 
-        while(ga.isTerminationConditionMet(population)) {
-            System.out.println("Best soluation: " + population.getFittest(0).toString());
+        while(ga.isTerminationConditionMet(population)==false) {
+            System.out.println("Best solution: " + population.getFittest(0).toString());
 
             //apply crossover
             population = ga.crossoverPopulation(population);
@@ -28,6 +28,6 @@ public class AllOnesGA {
         }
 
         System.out.println("Found solution in " + generation + " generations");
-        System.out.println("Best soluation: " + population.getFittest(0).toString());
+        System.out.println("Best solution: " + population.getFittest(0).toString());
     }
 }
