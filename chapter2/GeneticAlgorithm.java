@@ -98,7 +98,7 @@ public class GeneticAlgorithm {
                     if(0.5 > Math.random()) {
                         offspring.setGene(geneIndex, parent1.getGene(geneIndex));
                     } else {
-                        offspring.setGene(geneIndex, parent1.getGene(geneIndex));
+                        offspring.setGene(geneIndex, parent2.getGene(geneIndex));
                     }
                 }
 

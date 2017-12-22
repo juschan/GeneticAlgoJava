@@ -4,7 +4,7 @@ package chapter2;
 public class AllOnesGA {
 
     public static void main(String[] args) {
-        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.95, 2);
+        GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.001, 0.95, 2);
 
         //initialize population
         Population population = ga.initPopulation(50);
