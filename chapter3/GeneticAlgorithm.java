@@ -6,21 +6,21 @@ public class GeneticAlgorithm {
     private double crossoverRate;
     private int elitismCount;
 
+    protected int tournamentSize;
+
     //constructor
-    public GeneticAlgorithm(int populationSize, double mutationRate, double crossoverRate, int elitismCount) {
+    public GeneticAlgorithm(int populationSize, double mutationRate, double crossoverRate, int elitismCount, int tournamentSize) {
         this.populationSize = populationSize;
         this.mutationRate = mutationRate;
         this.crossoverRate = crossoverRate;
         this.elitismCount = elitismCount;
+        this.tournamentSize = tournamentSize;
     }
 
     public Population initPopulation(int chromosomeLength) {
         Population population = new Population(this.populationSize, chromosomeLength);
         return population;
     }
-
-
-
 
     public Population mutatePopulation(Population population) {
         Population newPopulation = new Population(this.populationSize);
