@@ -38,6 +38,23 @@ public class GeneticAlgorithm {
         return tournament.getFittest(0);
     }
 
-    
+    public double calcFitness(Individual individual, City cities[]) {
+        Route route = new Route(individual, cities);
+        double fitness = 1 / route.getDistance();
+
+        individual.setFitness(fitness);
+        return fitness;
+    }
+
+    public void evalPopulation(Population population, City cities[]) {
+        double populationFitness =0;
+
+        for (Individual individual : population.getIndividuals() ) {
+            populationFitness += this.calcFitness(individual,cities);
+        }
+
+        double avgFitness = populationFitness/population.size();
+        population.setPopulationFitness(avgFitness);
+    }
 
 }
