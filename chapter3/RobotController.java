@@ -28,8 +28,26 @@ public class RobotController {
 
          GeneticAlgorithm ga = new GeneticAlgorithm(200, 0.05, 0.9, 2, 10);
          Population population = ga.initPopulation(128);
-
+         
+         ga.evalPopulation(population, maze);
+        
          int generation=1;
+
+        while (ga.isTerminationConditionMet(generation, maxGenerations)==false) {
+            Individual fittest = population.getFittest(0);
+            System.out.println("G" + generation + " Best Solution " + fittest.getFitness() + "):" + fittest);
+
+            //do crossover
+            //do mutation
+
+            ga.evalPopulation(population, maze);
+            generation++;
+        }
+
+        System.out.println("Stopped after " + maxGenerations + " generations.");
+        Individual fittest = population.getFittest(0);
+        System.out.println("Best Solution " + fittest.getFitness() + "):" + fittest.toString());
+         
 
     }
 }

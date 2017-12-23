@@ -45,5 +45,28 @@ public class GeneticAlgorithm {
         return newPopulation;
     }
 
+    public double calcFitness(Individual individual, Maze maze) {
+        int[] chromosome = individual.getChromosome();
+        Robot robot = new Robot(chromosome, maze, 100);
+        robot.run();
+        int fitness=maze.scoreRoute(robot.getRoute());
+        individual.setFitness(fitness);
+        return fitness;
+    }
+
+    public void evalPopulation(Population population, Maze maze) {
+        double populationFitness=0;
+
+        for(Individual individual : population.getIndividuals()) {
+            populationFitness += this.calcFitness(individual, maze);
+        }
+        population.setPopulationFitness(populationFitness);
+    }
+
+    public boolean isTerminationConditionMet(int generationsCount, int nextGenerations) {
+        return (generationsCount > nextGenerations);
+    }
+
+
 
 }
