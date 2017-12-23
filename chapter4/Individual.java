@@ -11,17 +11,16 @@ public class Individual {
         this.chromosome = chromosome;
     }
 
-    //constructor with randomised inputs
     public Individual(int chromosomeLength) {
-        this.chromosome = new int[chromosomeLength];
-        for( int gene=0; gene < chromosomeLength; gene++) {
-            if(0.5 < Math.random()){
-                this.setGene(gene,1);
-            } else {
-                this.setGene(gene,0);
-            }
+        int[] individual;
+        individual = new int[chromosomeLength];
+
+        for(int gene=0; gene < chromosomeLength; gene++) {
+            individual[gene] = gene;
         }
+        this.chromosome = individual;
     }
+
 
     public int[] getChromosome() {
         return this.chromosome;
