@@ -24,10 +24,16 @@ public class TSP {
         int generation=1;
 
         while(ga.isTerminationConditionMet(generation, maxGenerations)==false) {
+            Route route = new Route(population.getFittest(0), cities);
+            System.out.println("G" + generation + " Best Distance: " + route.getDistance());
 
-
+            ga.evalPopulation(population, cities);
             generation++;
         }
+
+        System.out.println("Stopped after " + maxGenerations + " generations");
+        Route route = new Route(population.getFittest(0), cities);
+        System.out.println("Best Distance: " + route.getDistance());
 
     }
 }
