@@ -59,6 +59,7 @@ public class GeneticAlgorithm {
         population.setPopulationFitness(avgFitness);
     }
 
+    //ordered crossover to preserve order
     public Population crossoverPopulation(Population population) {
         Population newPopulation = new Population(population.size());
 
@@ -107,6 +108,7 @@ public class GeneticAlgorithm {
         return newPopulation;
     }
 
+    //swap mutation to preserve permutation
     public Population mutatePopulation(Population population) {
         Population newPopulation = new Population(this.populationSize);
 
