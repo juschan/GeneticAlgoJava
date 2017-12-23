@@ -37,8 +37,9 @@ public class RobotController {
             Individual fittest = population.getFittest(0);
             System.out.println("G" + generation + " Best Solution " + fittest.getFitness() + "):" + fittest);
 
-            //do crossover
-            //do mutation
+            ga.crossoverPopulation(population);
+
+            ga.mutatePopulation(population);
 
             ga.evalPopulation(population, maze);
             generation++;
