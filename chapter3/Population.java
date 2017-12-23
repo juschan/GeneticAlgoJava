@@ -1,4 +1,4 @@
-package chapter33;
+package chapter3;
 
 import java.util.Arrays;
 import java.util.Comparator;
