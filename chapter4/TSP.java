@@ -27,6 +27,8 @@ public class TSP {
             Route route = new Route(population.getFittest(0), cities);
             System.out.println("G" + generation + " Best Distance: " + route.getDistance());
 
+
+            population = ga.crossoverPopulation(population);
             ga.evalPopulation(population, cities);
             generation++;
         }

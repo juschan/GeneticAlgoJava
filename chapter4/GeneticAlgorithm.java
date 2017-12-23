@@ -1,5 +1,7 @@
 package chapter4;
 
+import java.util.Arrays;
+
 public class GeneticAlgorithm {
     private int populationSize;
     private double mutationRate;
@@ -55,6 +57,54 @@ public class GeneticAlgorithm {
 
         double avgFitness = populationFitness/population.size();
         population.setPopulationFitness(avgFitness);
+    }
+
+    public Population crossoverPopulation(Population population) {
+        Population newPopulation = new Population(population.size());
+
+        for (int populationIndex =0; populationIndex<population.size(); populationIndex++) {
+            Individual parent1 = population.getFittest(populationIndex);
+
+            if(this.crossoverRate > Math.random() && populationIndex >= this.elitismCount) {
+                Individual parent2 = this.selectParent(population);
+
+                //create offspring
+                int offspringChromosome[] = new int[parent1.getChromosomeLength()];
+                Arrays.fill(offspringChromosome, -1);
+                Individual offspring = new Individual(offspringChromosome);
+
+                int substrPos1 = (int) (Math.random() * parent1.getChromosomeLength());
+                int substrPos2 = (int) (Math.random() * parent1.getChromosomeLength());
+
+                final int startSubstr = Math.min(substrPos1, substrPos2);
+                final int endSubstr = Math.min(substrPos1, substrPos2);
+
+                for(int i=startSubstr; i<endSubstr; i++) {
+                    offspring.setGene(i, parent1.getGene(i));
+                }
+
+                for(int i=0; i<parent2.getChromosomeLength(); i++) {
+                    int parent2Gene = i+endSubstr;
+                    if(parent2Gene >= parent2.getChromosomeLength()) {
+                        parent2Gene -= parent2.getChromosomeLength();
+                    }
+
+                    if(offspring.containsGene(parent2.getGene(parent2Gene))== false) {
+                        for (int ii=0; ii<offspring.getChromosomeLength(); ii++) {
+                            if(offspring.getGene(ii) == -1) {
+                                offspring.setGene(ii, parent2.getGene(parent2Gene)); 
+                                break;
+                            }
+                        }
+                    }
+                }
+            newPopulation.setIndividual(populationIndex, offspring);
+            } else {
+                newPopulation.setIndividual(populationIndex, parent1);
+            }
+            
+        }
+        return newPopulation;
     }
 
 }
