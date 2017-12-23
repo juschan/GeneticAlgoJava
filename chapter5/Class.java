@@ -22,7 +22,7 @@ public class Class {
         this.timeslotId = timeslotId;
     }
 
-    public void setRoom(int roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 
