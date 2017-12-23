@@ -35,7 +35,7 @@ public class RobotController {
 
         while (ga.isTerminationConditionMet(generation, maxGenerations)==false) {
             Individual fittest = population.getFittest(0);
-            System.out.println("G" + generation + " Best Solution " + fittest.getFitness() + "):" + fittest);
+            System.out.println("G" + generation + " Best Solution (" + fittest.getFitness() + "):" + fittest);
 
             ga.crossoverPopulation(population);
 
@@ -47,7 +47,7 @@ public class RobotController {
 
         System.out.println("Stopped after " + maxGenerations + " generations.");
         Individual fittest = population.getFittest(0);
-        System.out.println("Best Solution " + fittest.getFitness() + "):" + fittest.toString());
+        System.out.println("Best Solution (" + fittest.getFitness() + "):" + fittest.toString());
          
 
     }
