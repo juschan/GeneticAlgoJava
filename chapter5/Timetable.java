@@ -2,6 +2,8 @@ package chapter5;
 
 import java.util.HashMap;
 
+import chapter5.Room;
+
 public class Timetable {
 
     private final HashMap<Integer, Room> rooms; 
@@ -84,6 +86,8 @@ public class Timetable {
 
                 classes[classIndex].addProfessor(chromosome[chromosomePos]);
                 chromosomePos++;
+
+                classIndex++;
             }
         }
         this.classes=classes;
@@ -101,8 +105,8 @@ public class Timetable {
     }
 
     public Room getRandomRoom() {
-        Object[] roomArray = this.rooms.values().toArray();
-        Room room = (Room) roomArray[(int) (roomArray.length * Math.random())];
+        Object[] roomsArray = this.rooms.values().toArray();
+        Room room = (Room) roomsArray[(int) (roomsArray.length * Math.random())];
         return room;
     }
 
@@ -164,23 +168,29 @@ public class Timetable {
             int roomCapacity = this.getRoom(classA.getRoomId()).getRoomCapacity();
             int groupSize = this.getGroup(classA.getGroupId()).getGroupSize();
 
+            
             if(roomCapacity < groupSize) {
                 clashes++;
             }
 
             for (Class classB : this.classes) {
-                if (classA.getRoomId() == classB.getRoomId() && classA.getTimeslotId() == classB.getTimeslotId()) {
+                if (classA.getRoomId() == classB.getRoomId() 
+                    && classA.getTimeslotId() == classB.getTimeslotId()
+                    && classA.getClassId() != classB.getClassId()) {
                     clashes++;
                     break;
                 }
             }
 
             for (Class classB : this.classes) {
-                if (classA.getProfessorId() == classB.getProfessorId() && classA.getTimeslotId() == classB.getTimeslotId()) {
+                if (classA.getProfessorId() == classB.getProfessorId() 
+                    && classA.getTimeslotId() == classB.getTimeslotId()
+                    && classA.getClassId() != classB.getClassId()) {
                     clashes++;
                     break;
                 }
             }
+            
         }
         return clashes;
     }

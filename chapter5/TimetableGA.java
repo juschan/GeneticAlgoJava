@@ -70,10 +70,10 @@ public class TimetableGA {
         timetable.addTimeslot(9, "Wed 13:00 - 15:00");
         timetable.addTimeslot(10, "Thu 9:00 - 11:00");
         timetable.addTimeslot(11, "Thu 11:00 - 13:00");
-        timetable.addTimeslot(13, "Thu 13:00 - 15:00");
-        timetable.addTimeslot(14, "Fri 9:00 - 11:00");
-        timetable.addTimeslot(15, "Fri 11:00 - 13:00");
-        timetable.addTimeslot(16, "Fri 13:00 - 15:00");
+        timetable.addTimeslot(12, "Thu 13:00 - 15:00");
+        timetable.addTimeslot(13, "Fri 9:00 - 11:00");
+        timetable.addTimeslot(14, "Fri 11:00 - 13:00");
+        timetable.addTimeslot(15, "Fri 13:00 - 15:00");
 
         timetable.addProfessor(1, "Dr A");
         timetable.addProfessor(2, "Dr B");
