@@ -19,6 +19,11 @@ public class GeneticAlgorithm {
         this.tournamentSize = tournamentSize;
     }
 
+    public Population initPopulation(Timetable timetable) {
+        Population population = new Population(this.populationSize, timetable);
+        return population;
+    }
+
     public boolean isTerminationConditionMet(int generationsCount, int nextGenerations) {
         return (generationsCount > nextGenerations);
     }

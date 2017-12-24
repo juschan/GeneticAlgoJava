@@ -8,6 +8,8 @@ public class TimetableGA {
 
         GeneticAlgorithm ga = new GeneticAlgorithm(100, 0.01, 0.9, 2, 5);
 
+        Population population = ga.initPopulation(timetable);
+
         int generation =1;
 
         //while (false) {
