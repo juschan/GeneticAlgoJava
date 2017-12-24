@@ -21,6 +21,30 @@ public class Individual {
         this.chromosome = individual;
     }
 
+    public Individual(Timetable timetable) {
+        int numClasses = timetable.getNumClasses();
+        int chromosomeLength = numClasses * 3;
+        int newChromosome[] = new int[chromosomeLength];
+        int chromosomeIndex =0;
+
+        for (Group group : timetable.getGroupsAsArray() ) {
+            for (int moduleId: group.getModuleIds()) {
+                int timeslotId = timetable.getRandomTimeslot().getTimeslotId();
+                newChromosome[chromosomeIndex] = timeslotId;
+                chromosomeIndex++;
+
+                int roomId = timetable.getRandomRoom().getRoomId();
+                newChromosome[chromosomeIndex] = roomId;
+                chromosomeIndex++;
+
+                Module module = timetable.getModule(moduleId);
+                newChromosome[chromosomeIndex] = module.getRandomProfessorId();
+                chromosomeIndex++;
+            }
+        }
+        this.chromosome = newChromosome;
+    }
+
 
     public int[] getChromosome() {
         return this.chromosome;
