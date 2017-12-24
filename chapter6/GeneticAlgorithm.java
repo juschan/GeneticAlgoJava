@@ -117,7 +117,7 @@ public class GeneticAlgorithm {
             Individual randomIndividual = new Individual(timetable);
 
             //Calc adaptive mutation rate
-            double adaptiveMutationRate = this.mutateRate;
+            double adaptiveMutationRate = this.mutationRate;
             if(individual.getFitness() > population.getAvgFitness()) {
                 double fitnessDelta1 = bestFitness - individual.getFitness();
                 double fitnessDelta2 = bestFitness - population.getAvgFitness();
