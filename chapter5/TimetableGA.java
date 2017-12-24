@@ -10,11 +10,16 @@ public class TimetableGA {
 
         Population population = ga.initPopulation(timetable);
 
+        ga.evalPopulation(population, timetable);
+
         int generation =1;
 
         while (true) {
             System.out.println("G" + generation + "Best fitness: " + population.getFittest(0).getFitness());
             population = ga.crossoverPopulation(population);
+
+
+            ga.evalPopulation(population, timetable);
 
             generation++;
         }

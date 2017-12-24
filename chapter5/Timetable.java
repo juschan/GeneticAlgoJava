@@ -157,7 +157,7 @@ public class Timetable {
         return this.numClasses;
     }
 
-    public int calcClasses() {
+    public int calcClashes() {
         int clashes=0;
 
         for (Class classA : this.classes) {

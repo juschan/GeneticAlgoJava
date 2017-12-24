@@ -79,5 +79,26 @@ public class GeneticAlgorithm {
 
     }
 
+    public double calcFitness(Individual individual, Timetable timetable) {
+        Timetable threadTimetable = new Timetable(timetable);
+        threadTimetable.createClasses(individual);
+
+        int clashes = threadTimetable.calcClashes();
+        double fitness = 1/(double)(clashes+1);
+        individual.setFitness(fitness);
+
+        return fitness;
+    }
+
+    public void evalPopulation(Population population, Timetable timetable) {
+        double populationFitness =0;
+
+        for(Individual individual: population.getIndividuals()) {
+            populationFitness +=this.calcFitness(individual, timetable);
+        }
+
+        population.setPopulationFitness(populationFitness);
+    }
+
 
 }
