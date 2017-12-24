@@ -89,11 +89,11 @@ public class Population {
         if(this.populationFitness == -1) {
             double totalFitness =0;
             for (Individual individual: population) {
-                totalfitness += Individual.getFitness();
+                totalFitness += individual.getFitness();
             }
             this.populationFitness = totalFitness;
         }
-        return ppoulationFitness / this.size();
+        return populationFitness / this.size();
     }
 
 
