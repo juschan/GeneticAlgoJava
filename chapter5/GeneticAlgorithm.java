@@ -100,5 +100,8 @@ public class GeneticAlgorithm {
         population.setPopulationFitness(populationFitness);
     }
 
+    public boolean isTerminationConditionMet(Population population) {
+        return population.getFittest(0).getFitness() == 1.0;
+    }
 
 }

@@ -14,7 +14,8 @@ public class TimetableGA {
 
         int generation =1;
 
-        while (true) {
+        while (ga.isTerminationConditionMet(generation, 1000) ==false 
+            && ga.isTerminationConditionMet(population) == false) {
             System.out.println("G" + generation + "Best fitness: " + population.getFittest(0).getFitness());
             population = ga.crossoverPopulation(population);
 
@@ -23,6 +24,27 @@ public class TimetableGA {
 
             generation++;
         }
+
+        timetable.createClasses(population.getFittest(0));
+        System.out.println();
+        System.out.println("Solution found in " + generation + " generations");
+        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
+        System.out.println();
+        System.out.println("Clashes: " + timetable.calcClashes());
+        System.out.println();
+        Class classes[] = timetable.getClasses();
+        int classIndex=1;
+        for (Class bestClass: classes) {
+            System.out.println("Class " + classIndex + ":");
+            System.out.println("Module: " + timetable.getModule(bestClass.getModuleId()).getModuleName());
+            System.out.println("Group: " + timetable.getGroup(bestClass.getGroupId()));
+            System.out.println("Room: " + timetable.getRoom(bestClass.getRoomId()).getRoomNumber());
+            System.out.println("Professor: " + timetable.getProfessor(bestClass.getProfessorId()).getProfessorName());
+            System.out.println("Time: " + timetable.getTimeslot(bestClass.getTimeslotId()).getTimeslot());
+            System.out.println("------");
+            classIndex++;
+        }
+        
     }
 
     //initializing method
