@@ -17,8 +17,10 @@ public class TimetableGA {
         while (ga.isTerminationConditionMet(generation, 1000) ==false 
             && ga.isTerminationConditionMet(population) == false) {
             System.out.println("G" + generation + "Best fitness: " + population.getFittest(0).getFitness());
+
             population = ga.crossoverPopulation(population);
 
+            population = ga.mutatePopulation(population, timetable);
 
             ga.evalPopulation(population, timetable);
 

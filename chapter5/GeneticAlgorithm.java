@@ -104,4 +104,25 @@ public class GeneticAlgorithm {
         return population.getFittest(0).getFitness() == 1.0;
     }
 
+    //implement uniform mutation
+    public Population mutatePopulation(Population population, Timetable timetable) {
+        Population newPopulation = new Population(this.populationSize);
+
+        for(int populationIndex =0; populationIndex < population.size(); populationIndex++) {
+            Individual individual = population.getFittest(populationIndex);
+
+            Individual randomIndividual = new Individual(timetable);
+
+            for (int geneIndex=0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
+                if (populationIndex > this.elitismCount) {
+                    if (this.mutationRate > Math.random()) {
+                        individual.setGene(geneIndex, randomIndividual.getGene(geneIndex));
+                    }
+                }
+            }
+            newPopulation.setIndividual(populationIndex, individual);
+        }
+        return newPopulation;
+    }
+
 }
