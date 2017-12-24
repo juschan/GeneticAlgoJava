@@ -12,12 +12,12 @@ public class TimetableGA {
 
         int generation =1;
 
-        //while (false) {
-            //System.out.prinln("G" + generation + "Best fitness: " + population.getFittest(0).getFitness());
-            //population = ga.crossoverPopulation(population);
+        while (true) {
+            System.out.println("G" + generation + "Best fitness: " + population.getFittest(0).getFitness());
+            population = ga.crossoverPopulation(population);
 
-        //    generation++;
-       // }
+            generation++;
+        }
     }
 
     //initializing method
