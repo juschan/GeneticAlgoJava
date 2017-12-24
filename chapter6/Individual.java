@@ -1,4 +1,4 @@
-package chapter5;
+package chapter6;
 
 
 //Individual class represents single candidate solution. 

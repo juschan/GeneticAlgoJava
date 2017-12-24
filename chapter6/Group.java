@@ -1,4 +1,4 @@
-package chapter5;
+package chapter6;
 
 public class Group {
     private final int groupId;

@@ -1,8 +1,6 @@
-package chapter5;
+package chapter6;
 
 import java.util.HashMap;
-
-import chapter5.Room;
 
 public class Timetable {
 

@@ -1,4 +1,4 @@
-package chapter5;
+package chapter6;
 
 public class TimetableGA {
 
@@ -25,6 +25,9 @@ public class TimetableGA {
             ga.evalPopulation(population, timetable);
 
             generation++;
+
+            //Simulated annealing code for multi-heuristic algorithm
+            ga.coolTemperature();
         }
 
         timetable.createClasses(population.getFittest(0));

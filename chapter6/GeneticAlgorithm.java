@@ -1,4 +1,4 @@
-package chapter5;
+package chapter6;
 
 import java.util.Arrays;
 
@@ -9,6 +9,18 @@ public class GeneticAlgorithm {
     private int elitismCount;
 
     protected int tournamentSize;
+
+    //implement simulated annealing - multi-heuristic algorithm. 
+    private double temperature = 1.0;
+    private double coolingRate = 0.001;
+
+    public void coolTemperature() {
+        this.temperature *= (1-this.coolingRate);
+    }
+
+    public double getTemperature() {
+        return this.temperature;
+    }
 
     //constructor
     public GeneticAlgorithm(int populationSize, double mutationRate, double crossoverRate, int elitismCount, int tournamentSize) {
@@ -126,7 +138,7 @@ public class GeneticAlgorithm {
 
             for (int geneIndex=0; geneIndex < individual.getChromosomeLength(); geneIndex++) {
                 if (populationIndex > this.elitismCount) {
-                    if (adaptiveMutationRate > Math.random()) {
+                    if (adaptiveMutationRate * this.getTemperature() > Math.random()) {
                         individual.setGene(geneIndex, randomIndividual.getGene(geneIndex));
                     }
                 }
