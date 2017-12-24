@@ -1,6 +1,7 @@
 package chapter6;
 
 import java.util.Arrays;
+import java.util.stream.IntStream; //import to use streams for parallel processing
 
 public class GeneticAlgorithm {
     private int populationSize;
@@ -103,6 +104,10 @@ public class GeneticAlgorithm {
     }
 
     public void evalPopulation(Population population, Timetable timetable) {
+        //parallel processing using Java 8's Streams
+        IntStream.range(0, population.size()).parallel()
+        .forEach(i -> this.calcFitness(population.getIndividual(i), timetable));
+
         double populationFitness =0;
 
         for(Individual individual: population.getIndividuals()) {
