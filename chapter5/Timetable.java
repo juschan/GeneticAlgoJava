@@ -2,8 +2,6 @@ package chapter5;
 
 import java.util.HashMap;
 
-import chapter4.Individual;
-
 public class Timetable {
 
     private final HashMap<Integer, Room> rooms; 
@@ -47,7 +45,7 @@ public class Timetable {
         return this.professors;
     }
 
-    public void AddRoom(int roomId, String roomName, int capacity) {
+    public void addRoom(int roomId, String roomName, int capacity) {
         this.rooms.put(roomId, new Room(roomId, roomName, capacity));
     }
 
